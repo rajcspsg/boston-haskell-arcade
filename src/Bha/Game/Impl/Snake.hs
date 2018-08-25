@@ -44,7 +44,11 @@ game =
 
 init :: Seed -> Model
 init seed =
-  Model seed (pure (0, 0)) DirRight (5, 5)
+      let (x, firstSeed) = randomInt 0 39 seed
+          (y, secondSeed) = randomInt 0 19 firstSeed
+      in 
+      Model secondSeed (pure (0, 0)) DirRight (x, y)
+
 
 inBounds :: (Col, Row) -> Bool
 inBounds (col, row) =
